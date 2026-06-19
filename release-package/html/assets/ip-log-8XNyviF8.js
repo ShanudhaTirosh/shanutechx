@@ -1,2 +1,0 @@
-function e(e){if(!Array.isArray(e))return[];let t=[];for(let n of e){if(typeof n==`string`){n.length>0&&t.push({ip:n,time:``,node:``});continue}if(n&&typeof n==`object`){let e=n,r=typeof e.ip==`string`?e.ip:``;if(!r)continue;t.push({ip:r,time:typeof e.time==`string`?e.time:``,node:typeof e.node==`string`?e.node:``})}}return t}export{e as t};
-//# sourceMappingURL=ip-log-8XNyviF8.js.map

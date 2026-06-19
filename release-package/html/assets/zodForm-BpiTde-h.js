@@ -1,2 +1,0 @@
-function e(e,t){return{validator:async(n,r)=>{let i=e.safeParse(r);if(i.success)return;let a=i.error.issues[0]?.message??`validation.invalid`;throw Error(t(a,{defaultValue:a}))}}}export{e as t};
-//# sourceMappingURL=zodForm-BpiTde-h.js.map
