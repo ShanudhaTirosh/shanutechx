@@ -1,0 +1,2 @@
+import{r as e}from"./rolldown-runtime-QTnfLwEv.js";import{yi as t}from"./vendor-9-zJVp-W.js";var n=e(t(),1),r=768;function i(e=r){let[t,i]=(0,n.useState)(()=>window.innerWidth<=e);return(0,n.useEffect)(()=>{let t=()=>i(window.innerWidth<=e);return window.addEventListener(`resize`,t),()=>window.removeEventListener(`resize`,t)},[e]),{isMobile:t}}export{i as t};
+//# sourceMappingURL=useMediaQuery-CieucKwg.js.map

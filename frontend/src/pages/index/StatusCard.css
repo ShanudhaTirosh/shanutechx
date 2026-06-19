@@ -1,9 +1,65 @@
+/* ============================================================
+   SHANUTECHX — StatusCard (traffic ring tiles)
+   StatusCard.css
+   ============================================================ */
+
+.status-card {
+  transition: transform 0.18s ease-out, box-shadow 0.20s ease-out;
+}
+
+.status-card:hover {
+  transform:  translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-card { transition: none; transform: none; }
+}
+
 .status-card .text-center {
   text-align: center;
 }
 
+/* Progress ring — use brand cyan for the "fill" stroke */
 .status-card .ant-progress-text,
 .status-card .ant-progress-indicator {
-  font-size: 12px !important;
+  font-size:   12px !important;
   font-weight: 500;
+}
+
+/* Override the default blue stroke to brand gradient.
+   AntD 6 renders the circle as an SVG stroke; we can tint the
+   active color via colorPrimary which is set to brand-violet
+   in useTheme.tsx, so no extra override is needed here.       */
+
+/* Subtle icon containers — violet glow on dark */
+.is-dark .status-card .stat-icon-wrap {
+  width:         36px;
+  height:        36px;
+  border-radius: 10px;
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+  background:    rgba(122, 67, 215, 0.15);
+  color:         #7A43D7;
+  transition:    background 0.18s;
+}
+
+.is-dark .status-card:hover .stat-icon-wrap {
+  background: rgba(35, 182, 211, 0.15);
+  color:      #23B6D3;
+}
+
+/* Upload / download byte labels */
+.is-dark .status-card .stat-label {
+  font-size:      11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color:          rgba(250, 250, 250, 0.50);
+}
+
+.is-dark .status-card .stat-value {
+  font-size:   17px;
+  font-weight: 600;
+  color:       #FAFAFA;
+  font-family: 'Inter', ui-monospace, monospace;
 }

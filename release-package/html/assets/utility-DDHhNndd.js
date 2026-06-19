@@ -1,0 +1,2 @@
+import{r as e}from"./rolldown-runtime-QTnfLwEv.js";import{yi as t}from"./vendor-9-zJVp-W.js";import{t as n}from"./vendor-react-By8HlURe.js";var r=e(t(),1),i=n();function a({when:e,fallback:t=null,children:n}){let[a,o]=(0,r.useState)(e);return(0,r.useEffect)(()=>{e&&!a&&o(!0)},[e,a]),a?(0,i.jsx)(r.Suspense,{fallback:t,children:n}):null}export{a as t};
+//# sourceMappingURL=utility-DDHhNndd.js.map

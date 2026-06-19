@@ -1,17 +1,15 @@
 [Unit]
-Description=x-ui Service
-After=network.target
-Wants=network.target
+Description=SHANUTECHX Panel Service
+After=network.target nss-lookup.target
 
 [Service]
-EnvironmentFile=-/etc/sysconfig/x-ui
-Environment="XRAY_VMESS_AEAD_FORCED=false"
-Type=simple
-WorkingDirectory=/usr/local/x-ui/
+User=root
+WorkingDirectory=/usr/local/x-ui
 ExecStart=/usr/local/x-ui/x-ui
-ExecReload=/bin/kill -USR1 $MAINPID
 Restart=on-failure
 RestartSec=5s
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target

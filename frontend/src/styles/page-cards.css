@@ -1,3 +1,9 @@
+/* ============================================================
+   SHANUTECHX — Page Cards (glassmorphism overlay)
+   page-cards.css
+   ============================================================ */
+
+/* ── Base card shape ─────────────────────────────────────────── */
 .index-page .ant-card,
 .clients-page .ant-card,
 .inbounds-page .ant-card,
@@ -5,12 +11,18 @@
 .settings-page .ant-card,
 .nodes-page .ant-card,
 .groups-page .ant-card,
-.api-docs-page .ant-card {
-  border-radius: 12px;
+.api-docs-page .ant-card,
+.hosts-page .ant-card {
+  border-radius: 16px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+  transition:
+    transform  0.18s ease-out,
+    box-shadow 0.20s ease-out,
+    border-color 0.18s ease;
+  font-family: 'Inter', 'Manrope', system-ui, sans-serif;
 }
 
+/* ── Dark glass overlay ─────────────────────────────────────── */
 .index-page.is-dark .ant-card,
 .clients-page.is-dark .ant-card,
 .inbounds-page.is-dark .ant-card,
@@ -18,12 +30,32 @@
 .settings-page.is-dark .ant-card,
 .nodes-page.is-dark .ant-card,
 .groups-page.is-dark .ant-card,
-.api-docs-page.is-dark .ant-card {
+.api-docs-page.is-dark .ant-card,
+.hosts-page.is-dark .ant-card {
+  backdrop-filter:    blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background:         rgba(11, 14, 42, 0.55) !important;
+  border:             1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    0 8px 32px rgba(3, 6, 29, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+@supports not (backdrop-filter: blur(1px)) {
+  .index-page.is-dark .ant-card,
+  .clients-page.is-dark .ant-card,
+  .inbounds-page.is-dark .ant-card,
+  .xray-page.is-dark .ant-card,
+  .settings-page.is-dark .ant-card,
+  .nodes-page.is-dark .ant-card,
+  .groups-page.is-dark .ant-card,
+  .api-docs-page.is-dark .ant-card,
+  .hosts-page.is-dark .ant-card {
+    background: rgba(11, 14, 42, 0.90) !important;
+  }
+}
+
+/* ── Ultra-dark glass overlay ───────────────────────────────── */
 .index-page.is-dark.is-ultra .ant-card,
 .clients-page.is-dark.is-ultra .ant-card,
 .inbounds-page.is-dark.is-ultra .ant-card,
@@ -31,12 +63,16 @@
 .settings-page.is-dark.is-ultra .ant-card,
 .nodes-page.is-dark.is-ultra .ant-card,
 .groups-page.is-dark.is-ultra .ant-card,
-.api-docs-page.is-dark.is-ultra .ant-card {
+.api-docs-page.is-dark.is-ultra .ant-card,
+.hosts-page.is-dark.is-ultra .ant-card {
+  background:  rgba(6, 8, 26, 0.62) !important;
+  border:      1px solid rgba(255, 255, 255, 0.07) !important;
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+    0 8px 32px rgba(0, 0, 0, 0.70),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
+/* ── Hover lift ──────────────────────────────────────────────── */
 .index-page .ant-card.ant-card-hoverable:hover,
 .clients-page .ant-card.ant-card-hoverable:hover,
 .inbounds-page .ant-card.ant-card-hoverable:hover,
@@ -44,7 +80,8 @@
 .settings-page .ant-card.ant-card-hoverable:hover,
 .nodes-page .ant-card.ant-card-hoverable:hover,
 .groups-page .ant-card.ant-card-hoverable:hover,
-.api-docs-page .ant-card.ant-card-hoverable:hover {
+.api-docs-page .ant-card.ant-card-hoverable:hover,
+.hosts-page .ant-card.ant-card-hoverable:hover {
   cursor: default;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
@@ -56,25 +93,31 @@
 .settings-page.is-dark .ant-card.ant-card-hoverable:hover,
 .nodes-page.is-dark .ant-card.ant-card-hoverable:hover,
 .groups-page.is-dark .ant-card.ant-card-hoverable:hover,
-.api-docs-page.is-dark .ant-card.ant-card-hoverable:hover {
+.api-docs-page.is-dark .ant-card.ant-card-hoverable:hover,
+.hosts-page.is-dark .ant-card.ant-card-hoverable:hover {
+  transform:   translateY(-2px);
   box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 12px 36px rgba(3, 6, 29, 0.65),
+    0 0 0 1px rgba(122, 67, 215, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
-.index-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover,
-.clients-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover,
-.inbounds-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover,
-.xray-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover,
-.settings-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover,
-.nodes-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover,
-.groups-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover,
-.api-docs-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover {
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+@media (prefers-reduced-motion: reduce) {
+  .index-page .ant-card,
+  .clients-page .ant-card,
+  .inbounds-page .ant-card,
+  .xray-page .ant-card,
+  .settings-page .ant-card,
+  .nodes-page .ant-card,
+  .groups-page .ant-card,
+  .api-docs-page .ant-card,
+  .hosts-page .ant-card {
+    transition: none;
+    transform:  none;
+  }
 }
 
+/* ── Card action bar ─────────────────────────────────────────── */
 .index-page .ant-card .ant-card-actions,
 .clients-page .ant-card .ant-card-actions,
 .inbounds-page .ant-card .ant-card-actions,
@@ -82,47 +125,55 @@
 .settings-page .ant-card .ant-card-actions,
 .nodes-page .ant-card .ant-card-actions,
 .groups-page .ant-card .ant-card-actions,
-.api-docs-page .ant-card .ant-card-actions {
-  background: transparent;
-}
-
-/* Hosts page shares the same card styling + hover shadows (without the default
-   antd hoverable pointer/blur), matching Clients/Inbounds/etc. */
-.hosts-page .ant-card {
-  border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
-}
-
-.hosts-page.is-dark .ant-card {
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}
-
-.hosts-page.is-dark.is-ultra .ant-card {
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.025);
-}
-
-.hosts-page .ant-card.ant-card-hoverable:hover {
-  cursor: default;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-.hosts-page.is-dark .ant-card.ant-card-hoverable:hover {
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.hosts-page.is-dark.is-ultra .ant-card.ant-card-hoverable:hover {
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}
-
+.api-docs-page .ant-card .ant-card-actions,
 .hosts-page .ant-card .ant-card-actions {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background:  transparent;
+  border-radius: 0 0 16px 16px;
+}
+
+/* ── Modal glass surface ─────────────────────────────────────── */
+.is-dark .ant-modal-content {
+  backdrop-filter:    blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background:         rgba(11, 14, 42, 0.82) !important;
+  border:             1px solid rgba(255, 255, 255, 0.12);
+  border-radius:      16px;
+  box-shadow:
+    0 20px 60px rgba(3, 6, 29, 0.70),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .is-dark .ant-modal-content {
+    background: rgba(11, 14, 42, 0.97) !important;
+  }
+}
+
+/* ── Ant Table glass header ──────────────────────────────────── */
+.is-dark .ant-table-thead > tr > th,
+.is-dark .ant-table-thead > tr > td {
+  background: rgba(11, 14, 42, 0.70) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.is-dark .ant-table-tbody > tr:hover > td {
+  background: rgba(122, 67, 215, 0.08) !important;
+}
+
+.is-dark .ant-table-container {
   background: transparent;
+}
+
+/* ── Statistic card accent ───────────────────────────────────── */
+.is-dark .ant-statistic-title {
+  color: rgba(250, 250, 250, 0.55);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.is-dark .ant-statistic-content {
+  color: #FAFAFA;
+  font-family: 'Inter', system-ui, monospace;
 }

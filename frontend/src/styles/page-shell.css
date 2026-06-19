@@ -1,3 +1,9 @@
+/* ============================================================
+   SHANUTECHX — Page Shell
+   page-shell.css
+   ============================================================ */
+
+/* ── All standard page shells ────────────────────────────────── */
 .index-page,
 .clients-page,
 .inbounds-page,
@@ -5,13 +11,16 @@
 .settings-page,
 .nodes-page,
 .groups-page,
-.api-docs-page {
-  --bg-page: #e6e8ec;
-  --bg-card: #ffffff;
+.api-docs-page,
+.hosts-page {
+  --bg-page:   #e6e8ec;
+  --bg-card:   rgba(255, 255, 255, 0.70);
   min-height: 100vh;
   background: var(--bg-page);
+  font-family: 'Inter', 'Manrope', system-ui, sans-serif;
 }
 
+/* ── Dark theme ─────────────────────────────────────────────── */
 .index-page.is-dark,
 .clients-page.is-dark,
 .inbounds-page.is-dark,
@@ -19,11 +28,13 @@
 .settings-page.is-dark,
 .nodes-page.is-dark,
 .groups-page.is-dark,
-.api-docs-page.is-dark {
-  --bg-page: #1a1b1f;
-  --bg-card: #23252b;
+.api-docs-page.is-dark,
+.hosts-page.is-dark {
+  --bg-page:  transparent;   /* body gradient shows through */
+  --bg-card:  rgba(11, 14, 42, 0.55);
 }
 
+/* ── Ultra-dark theme ────────────────────────────────────────── */
 .index-page.is-dark.is-ultra,
 .clients-page.is-dark.is-ultra,
 .inbounds-page.is-dark.is-ultra,
@@ -31,27 +42,22 @@
 .settings-page.is-dark.is-ultra,
 .nodes-page.is-dark.is-ultra,
 .groups-page.is-dark.is-ultra,
-.api-docs-page.is-dark.is-ultra {
-  --bg-page: #000;
-  --bg-card: #101013;
+.api-docs-page.is-dark.is-ultra,
+.hosts-page.is-dark.is-ultra {
+  --bg-page:  transparent;
+  --bg-card:  rgba(6, 8, 26, 0.62);
 }
 
-.index-page .ant-layout,
-.index-page .ant-layout-content,
-.clients-page .ant-layout,
-.clients-page .ant-layout-content,
-.inbounds-page .ant-layout,
-.inbounds-page .ant-layout-content,
-.xray-page .ant-layout,
-.xray-page .ant-layout-content,
-.settings-page .ant-layout,
-.settings-page .ant-layout-content,
-.nodes-page .ant-layout,
-.nodes-page .ant-layout-content,
-.groups-page .ant-layout,
-.groups-page .ant-layout-content,
-.api-docs-page .ant-layout,
-.api-docs-page .ant-layout-content {
+/* ── Transparent layouts so body gradient bleeds through ──────── */
+.index-page .ant-layout,          .index-page .ant-layout-content,
+.clients-page .ant-layout,        .clients-page .ant-layout-content,
+.inbounds-page .ant-layout,       .inbounds-page .ant-layout-content,
+.xray-page .ant-layout,           .xray-page .ant-layout-content,
+.settings-page .ant-layout,       .settings-page .ant-layout-content,
+.nodes-page .ant-layout,          .nodes-page .ant-layout-content,
+.groups-page .ant-layout,         .groups-page .ant-layout-content,
+.api-docs-page .ant-layout,       .api-docs-page .ant-layout-content,
+.hosts-page .ant-layout,          .hosts-page .ant-layout-content {
   background: transparent;
 }
 
@@ -62,17 +68,20 @@
 .settings-page .content-shell,
 .nodes-page .content-shell,
 .groups-page .content-shell,
-.api-docs-page .content-shell {
+.api-docs-page .content-shell,
+.hosts-page .content-shell {
   background: transparent;
 }
 
+/* ── Content padding ─────────────────────────────────────────── */
 .index-page .content-area,
 .clients-page .content-area,
 .inbounds-page .content-area,
 .xray-page .content-area,
 .settings-page .content-area,
 .nodes-page .content-area,
-.groups-page .content-area {
+.groups-page .content-area,
+.hosts-page .content-area {
   padding: 24px;
 }
 
@@ -80,40 +89,63 @@
   .clients-page .content-area,
   .inbounds-page .content-area,
   .nodes-page .content-area,
-  .groups-page .content-area {
+  .groups-page .content-area,
+  .hosts-page .content-area {
     padding: 8px;
   }
 }
 
+/* ── Summary / filter cards ─────────────────────────────────── */
+.clients-page .summary-card,
+.inbounds-page .summary-card,
+.nodes-page .summary-card,
+.groups-page .summary-card,
+.hosts-page .summary-card {
+  padding: 16px;
+}
+
+@media (max-width: 768px) {
+  .clients-page .summary-card,
+  .inbounds-page .summary-card,
+  .nodes-page .summary-card,
+  .groups-page .summary-card,
+  .hosts-page .summary-card {
+    padding: 8px;
+  }
+}
+
+/* ── Loading spacer ─────────────────────────────────────────── */
 .loading-spacer {
   min-height: calc(100vh - 120px);
 }
 
-/* Tall action menus (e.g. the inbound/client context menus) must stay inside
-   the viewport even when antd flips them upward near the screen edge. */
+/* ── Dropdown overrides (violet accent) ─────────────────────── */
 .ant-dropdown .ant-dropdown-menu {
   max-height: calc(100vh - 32px);
   overflow-y: auto;
+  background: rgba(11, 14, 42, 0.90);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
 }
 
 .ant-dropdown-menu-item:not(.ant-dropdown-menu-item-disabled):not(.ant-dropdown-menu-item-danger):hover,
-.ant-dropdown-menu-item:not(.ant-dropdown-menu-item-disabled):not(.ant-dropdown-menu-item-danger):hover .ant-dropdown-menu-title-content,
-.ant-dropdown-menu-item:not(.ant-dropdown-menu-item-disabled):not(.ant-dropdown-menu-item-danger):hover > .anticon {
-  color: var(--ant-color-primary) !important;
+.ant-dropdown-menu-item:not(.ant-dropdown-menu-item-disabled):not(.ant-dropdown-menu-item-danger):hover
+  .ant-dropdown-menu-title-content,
+.ant-dropdown-menu-item:not(.ant-dropdown-menu-item-disabled):not(.ant-dropdown-menu-item-danger):hover
+  > .anticon {
+  color: #23B6D3 !important;
 }
 
 .ant-dropdown-menu-item:not(.ant-dropdown-menu-item-disabled):not(.ant-dropdown-menu-item-danger):hover {
-  background-color: color-mix(in srgb, var(--ant-color-primary) 14%, transparent) !important;
+  background-color: rgba(122, 67, 215, 0.14) !important;
 }
 
 .ant-dropdown-menu-item-divider {
-  background-color: var(--ant-color-border) !important;
+  background-color: rgba(255, 255, 255, 0.10) !important;
 }
 
-body.dark .ant-dropdown-menu-item-divider {
-  background-color: rgba(255, 255, 255, 0.12) !important;
-}
-
+/* ── Settings / Xray page header helpers ───────────────────── */
 .settings-page .header-row,
 .xray-page .header-row {
   display: flex;
@@ -132,87 +164,17 @@ body.dark .ant-dropdown-menu-item-divider {
   justify-content: flex-end;
 }
 
-.icons-only .ant-tabs-nav {
-  margin-bottom: 8px;
-}
+/* ── Icons-only tabs ─────────────────────────────────────────── */
+.icons-only .ant-tabs-nav                { margin-bottom: 8px; }
+.icons-only .ant-tabs-nav-wrap          { width: 100%; }
+.icons-only .ant-tabs-nav-list          { display: flex; width: 100%; }
+.icons-only .ant-tabs-tab               { flex: 1 1 0; justify-content: center; margin: 0; padding: 10px 0; }
+.icons-only .ant-tabs-tab .anticon      { margin: 0; font-size: 18px; }
+.icons-only .ant-tabs-nav-operations    { display: none; }
 
-.icons-only .ant-tabs-nav-wrap {
-  width: 100%;
-}
-
-.icons-only .ant-tabs-nav-list {
-  display: flex;
-  width: 100%;
-}
-
-.icons-only .ant-tabs-tab {
-  flex: 1 1 0;
-  justify-content: center;
-  margin: 0;
-  padding: 10px 0;
-}
-
-.icons-only .ant-tabs-tab .anticon {
-  margin: 0;
-  font-size: 18px;
-}
-
-.icons-only .ant-tabs-nav-operations {
-  display: none;
-}
-
-.clients-page .summary-card,
-.inbounds-page .summary-card,
-.nodes-page .summary-card,
-.groups-page .summary-card {
-  padding: 16px;
-}
-
-@media (max-width: 768px) {
-  .clients-page .summary-card,
-  .inbounds-page .summary-card,
-  .nodes-page .summary-card,
-  .groups-page .summary-card {
-    padding: 8px;
-  }
-}
-
-/* Hosts page shares the standard panel page shell (background, transparent
-   layout, content padding, summary-card padding). */
-.hosts-page {
-  --bg-page: #e6e8ec;
-  --bg-card: #ffffff;
-  min-height: 100vh;
-  background: var(--bg-page);
-}
-
-.hosts-page.is-dark {
-  --bg-page: #1a1b1f;
-  --bg-card: #23252b;
-}
-
-.hosts-page.is-dark.is-ultra {
-  --bg-page: #000;
-  --bg-card: #101013;
-}
-
-.hosts-page .ant-layout,
-.hosts-page .ant-layout-content,
-.hosts-page .content-shell {
-  background: transparent;
-}
-
-.hosts-page .content-area {
-  padding: 24px;
-}
-
-.hosts-page .summary-card {
-  padding: 16px;
-}
-
-@media (max-width: 768px) {
-  .hosts-page .content-area,
-  .hosts-page .summary-card {
-    padding: 8px;
-  }
+/* Active tab indicator uses brand gradient */
+.is-dark .ant-tabs-ink-bar {
+  background: linear-gradient(90deg, #7A43D7, #23B6D3) !important;
+  height: 2px;
+  border-radius: 2px;
 }
